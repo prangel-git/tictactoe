@@ -1,14 +1,6 @@
-use gts::abstractions::play;
-use gts::abstractions::Environment;
+use tictactoe::*;
 
-use gts::agents::alphabeta_agent::AlphabetaAgent;
-
-use tictactoe::AgentId;
-use tictactoe::Board;
-
-use gts::tree_search::depth_first;
-
-/// Alpha-beta prunning vs alphabeta pruning playing tic tac toe.
+/// Tic tac toe game (Alphabeta vs Alphabeta)
 fn main() {
     let mut board = Board::initial_state();
 
@@ -21,12 +13,12 @@ fn main() {
         println!("Player: {:?}, moved {}", agent, mv);
     }
 
-    println!("{}", board.to_string());
+    println!("Last board \n{}", board);
 
     let winner = board.winner();
 
     match winner {
         Some(x) => println!("Player {:?} wins.", x),
-        None => println!("The game ended in a draw"),
+        None => println!("\nThe game ended in a draw"),
     }
 }

@@ -1,6 +1,7 @@
-mod actions;
 mod display;
 mod environment;
+
+mod actions;
 mod utils;
 
 use self::actions::Actions;

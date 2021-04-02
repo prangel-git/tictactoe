@@ -7,10 +7,6 @@ pub use agentid::AgentId;
 mod board;
 pub use board::Board;
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+pub use gts::abstractions::*;
+pub use gts::agents::*;
+pub use gts::tree_search::*;
