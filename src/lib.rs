@@ -1,5 +1,5 @@
 /// Actions will be a number from 0 to 8 representing a position in the tic tac toe board
-pub type Action = usize;
+pub type Action = u8;
 
 mod agentid;
 pub use agentid::AgentId;

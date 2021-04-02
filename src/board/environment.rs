@@ -9,25 +9,25 @@ impl Environment<Action, AgentId> for Board {
     /// Implements an empty tic tac board with X player starting
     fn initial_state() -> Self {
         Board {
-            moves_x: Position::zeroed(),
-            moves_o: Position::zeroed(),
+            moves_x: 0,
+            moves_o: 0,
             turn: AgentId::X,
         }
     }
 
     /// Updates a board by filling the position given by the action.
     /// Returns true iff the board was updated.
-    fn update(&mut self, &a: &Action) -> bool {
-        if !self.is_valid(&a) {
+    fn update(&mut self, a: &Action) -> bool {
+        if !self.is_valid(a) {
             false
         } else {
             match self.turn {
                 AgentId::X => {
-                    self.moves_x.set(a, true);
+                    self.moves_x = set_bit(&mut self.moves_x, a);
                     self.turn = AgentId::O;
                 }
                 AgentId::O => {
-                    self.moves_o.set(a, true);
+                    self.moves_o = set_bit(&mut self.moves_o, a);
                     self.turn = AgentId::X;
                 }
             }
@@ -48,11 +48,11 @@ impl Environment<Action, AgentId> for Board {
     }
 
     /// Checks if an action is valid
-    fn is_valid(&self, &action: &Action) -> bool {
-        if action > 8 {
+    fn is_valid(&self, action: &Action) -> bool {
+        if action > &8 {
             false
         } else {
-            !(self.moves_x[action] || self.moves_o[action])
+            !(read_bit(&self.moves_x, action) || read_bit(&self.moves_o, action))
         }
     }
 

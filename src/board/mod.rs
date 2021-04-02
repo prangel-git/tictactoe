@@ -7,11 +7,9 @@ use self::actions::Actions;
 use super::Action;
 use super::AgentId;
 
-use self::utils::{is_filled, is_winning};
+use self::utils::*;
 
-use bitvec::prelude::*;
-
-type Position = BitArray<Lsb0, [u16; 1]>;
+type Position = u16;
 
 /// Represents a tictactoe board
 #[derive(Clone, Copy, PartialEq, Eq, Hash)]

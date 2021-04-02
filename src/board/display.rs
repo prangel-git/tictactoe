@@ -1,12 +1,12 @@
 use std::fmt::{Display, Formatter, Result};
 
-use super::Board;
+use super::*;
 
 impl Display for Board {
     fn fmt(&self, f: &mut Formatter) -> Result {
         for idx in 0..9 {
-            let x = self.moves_x[idx];
-            let o = self.moves_o[idx];
+            let x = read_bit(&self.moves_x, &idx);
+            let o = read_bit(&self.moves_o, &idx);
 
             if idx % 3 == 0 {
                 write!(f, "\n|").ok();

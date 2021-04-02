@@ -24,7 +24,7 @@ impl Iterator for Actions {
 
     /// Defines next element to iterate
     fn next(&mut self) -> Option<Self::Item> {
-        while self.current < 9 && self.occupied[self.current] {
+        while self.current < 9 && read_bit(&self.occupied, &self.current) {
             self.current += 1;
         }
 
