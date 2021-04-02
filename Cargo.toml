@@ -8,4 +8,3 @@ edition = "2018"
 
 [dependencies]
 gts = { git = "https://github.com/prangel-git/agent-environment.git", branch = "main"}
-bitvec = "0.20"
