@@ -36,7 +36,7 @@ pub(super) fn read_bit(pos: &Position, act: &Action) -> bool {
 }
 
 /// Set a bit
-pub(super) fn set_bit(&pos: &Position, &act: &Action) -> Position {
+pub(super) fn set_bit(&pos: &Position, act: &Action) -> Position {
     let mask = 1 << act;
     pos | mask
 }
