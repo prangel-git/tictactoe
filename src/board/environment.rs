@@ -4,8 +4,6 @@ use super::*;
 
 /// Implements environment for tic tac toe board
 impl Environment<Action, AgentId> for Board {
-    type ActionIter = Actions;
-
     /// Implements an empty tic tac board with X player starting
     fn initial_state() -> Self {
         Board {
@@ -43,8 +41,8 @@ impl Environment<Action, AgentId> for Board {
     }
 
     /// Produces iterator with valid actions
-    fn valid_actions(&self) -> Self::ActionIter {
-        Actions::new(self)
+    fn valid_actions(&self) -> Box<dyn Iterator<Item = Action>> {
+        Box::new(Actions::new(self))
     }
 
     /// Checks if an action is valid
